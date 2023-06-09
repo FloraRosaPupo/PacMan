@@ -59,6 +59,9 @@
     <Image Include="vilao1.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
+    <Image Include="fundoPerdeu.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Tijolo.h">

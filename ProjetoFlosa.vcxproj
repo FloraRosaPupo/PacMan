@@ -166,6 +166,7 @@
     <Image Include="..\..\ProjetoOO\ProjetoOO\tijolo.png" />
     <Image Include="fundo.png" />
     <Image Include="fundoP.png" />
+    <Image Include="fundoPerdeu.png" />
     <Image Include="vanDireita.png" />
     <Image Include="vilao1.png" />
     <Image Include="vilao2.png" />

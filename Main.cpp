@@ -1,8 +1,8 @@
-/*----------------- File: main.cpp -------------------+
+ï»¿/*----------------- File: main.cpp -------------------+
 |			    DESCRICAO DO ARQUIVO			      |
 | 		      ETAPA 1 - Projeto vanellope Man		          |
 | 									                  |
-| Implementado por Flora Rosa e Sabrina Guimarães 	  |
+| Implementado por Flora Rosa e Sabrina Guimarï¿½es 	  |
 |                                    	    30/04/2023|
 +-----------------------------------------------------+*/
 
@@ -33,6 +33,8 @@ int main()
     ALLEGRO_BITMAP* image = NULL;    // Imagem
     ALLEGRO_FONT* fonte = NULL; //Fonte
     ALLEGRO_BITMAP* final = NULL;//Imagem Final
+    ALLEGRO_BITMAP* finalPerdeu = NULL;//Imagem Final Perdeu
+
 
     if (!al_init())
     {
@@ -52,7 +54,7 @@ int main()
         al_show_native_message_box(display, "Error", "Error", "Falha ao iniciar o al_install_keyboard!",
             NULL, ALLEGRO_MESSAGEBOX_ERROR);
         return 0;
-      }
+    }
 
     if (!al_init_font_addon()) {
         al_show_native_message_box(display, "Error", "Error", "Falha ao iniciar o al_init_font_addon",
@@ -71,14 +73,14 @@ int main()
             NULL, ALLEGRO_MESSAGEBOX_ERROR);
         return 0;
     }
-    
+
     if (!al_init_acodec_addon()) {
         al_show_native_message_box(display, "Error", "Error", "Falha ao iniciar o al_init_acodec_addon",
             NULL, ALLEGRO_MESSAGEBOX_ERROR);
         return 0;
     }
 
-    
+
     // Cria uma tela com essas dimensoes
     display = al_create_display(1080, 900);
 
@@ -109,10 +111,21 @@ int main()
         return 0;
     }
 
+    //Fundo ganhou
     final = al_load_bitmap("fundoP.png");
     if (!final)
     {
         al_show_native_message_box(display, "Error", "Error", "Falha ao carregar a imagem do final!",
+            NULL, ALLEGRO_MESSAGEBOX_ERROR);
+        al_destroy_display(display);
+        return 0;
+    }
+
+    //Fundo perdeu
+    finalPerdeu = al_load_bitmap("fundoPerdeu.png");
+    if (!finalPerdeu)
+    {
+        al_show_native_message_box(display, "Error", "Error", "Falha ao carregar a imagem do final perdeu!",
             NULL, ALLEGRO_MESSAGEBOX_ERROR);
         al_destroy_display(display);
         return 0;
@@ -131,7 +144,7 @@ int main()
     //variaveis da Pirula
     int contP = 0, qtdpirula = 0, p = 0;
     //variaveis do Vilao
-    int v= 0, dirVilao = 0, viloesPx[4], viloesPy[4];
+    int v = 0, dirVilao = 0, viloesPx[4], viloesPy[4];
 
     //variaveis da Vanellope
     int posx, posy, direcao = 0;
@@ -152,17 +165,18 @@ int main()
         for (j = 0; j < 20; j++) {
             if (matriz[i][j] == 1) {
                 contT++;
-            }else if (matriz[i][j] == 0) {
+            }
+            else if (matriz[i][j] == 0) {
                 contP++;
             }
         }
     }
-    
+
     //Criando os objetos Tijolo e Pirula
     Tijolo* tijolo = new Tijolo[contT];
     Pirula* pirula = new Pirula[contP];
     Vanellope vanellope;
-    Viloes viloes[4]; 
+    Viloes viloes[4];
 
     //instanciando o objeto
     for (i = 0; i < 20; i++) {
@@ -180,7 +194,7 @@ int main()
                 pirula[qtdpirula].carregaImagem();
                 qtdpirula++;
             }
-            
+
             //Vanellope
             if (matriz[i][j] == 3) {
                 vanellope.setPosx(j);
@@ -219,12 +233,12 @@ int main()
         {
             exit(1);
         }
-        
+
         if (evento.type == ALLEGRO_EVENT_TIMER) {
 
 
             //movimentando os viloes
-            for(int v=0; v<4; v++){
+            for (int v = 0; v < 4; v++) {
                 viloesPy[v] = viloes[v].getPosy();
                 viloesPx[v] = viloes[v].getPosx();
 
@@ -238,9 +252,9 @@ int main()
                         dirVilao = 2 + rand();
                         printf("Entrou aqui %i\n", dirVilao);//teste
                     }
-                    
+
                 }//Pra baixo
-                else if ((dirVilao == 2)&& matriz[viloesPy[v] + 1][viloesPx[v]] != 1) {
+                else if ((dirVilao == 2) && matriz[viloesPy[v] + 1][viloesPx[v]] != 1) {
                     viloesPy[v] += 1;
                     viloes[v].setPosy(viloesPy[v]);
 
@@ -253,11 +267,11 @@ int main()
                         }
                     }
                 }//Pra Direita
-                else if ((dirVilao == 3) && matriz[viloesPy[v]][viloesPx[v]+1] != 1) {
+                else if ((dirVilao == 3) && matriz[viloesPy[v]][viloesPx[v] + 1] != 1) {
                     viloesPx[v] += 1;
                     viloes[v].setPosx(viloesPx[v]);
 
-                    if (matriz[viloesPy[v]][viloesPx[v]+1] == 1) {
+                    if (matriz[viloesPy[v]][viloesPx[v] + 1] == 1) {
                         dirVilao = 1 + rand() % 4;
                         while (dirVilao == 3) {
                             dirVilao = 1 + rand() % 4;
@@ -269,7 +283,7 @@ int main()
                     viloesPx[v] -= 1;
                     viloes[v].setPosx(viloesPx[v]);
 
-                    if (matriz[viloesPy[v]][viloesPx[v] -1] == 1) {
+                    if (matriz[viloesPy[v]][viloesPx[v] - 1] == 1) {
                         dirVilao = 1 + rand() % 4;
                         while (dirVilao == 3) {
                             dirVilao = 1 + rand() % 4;
@@ -284,7 +298,7 @@ int main()
             posy = vanellope.getPosy();
 
             //pra cima
-            if((direcao==1)&&(matriz[posy-1][posx]) !=1){
+            if ((direcao == 1) && (matriz[posy - 1][posx]) != 1) {
                 vanellope.setPosy(posy);
                 vanellope.andaVanellope(direcao);
                 posAnt = direcao;
@@ -297,13 +311,13 @@ int main()
                 posAnt = direcao;
             }
             // pra direita 
-            else if ((direcao == 3) && (matriz[posy][posx+1]) != 1) {
+            else if ((direcao == 3) && (matriz[posy][posx + 1]) != 1) {
                 vanellope.setPosx(posx);
                 vanellope.andaVanellope(direcao);
                 posAnt = direcao;
             }
             // pra esquerda 
-            else if ((direcao == 4) && (matriz[posy][posx-1]) != 1) {
+            else if ((direcao == 4) && (matriz[posy][posx - 1]) != 1) {
                 vanellope.setPosx(posx);
                 vanellope.andaVanellope(direcao);
                 posAnt = direcao;
@@ -329,7 +343,7 @@ int main()
 
                     break;
                 case 3:
-                    if ((matriz[posy][posx+1]) != 1)
+                    if ((matriz[posy][posx + 1]) != 1)
                     {
                         vanellope.setPosx(posx);
                         vanellope.andaVanellope(posAnt);
@@ -400,14 +414,14 @@ int main()
                 pirula[p].controle = 0;
             }
 
-        }        
+        }
 
         //colisao 
         for (int v = 0; v < 4; v++) {
             if (vanellope.getPosy() == viloes[v].getPosy() && vanellope.getPosx() == viloes[v].getPosx()) {
                 fonte = al_load_font("vanellope.ttf", 150, 0);
                 al_clear_to_color(al_map_rgb(0, 0, 0));
-                al_draw_bitmap(final, 0, 0, 0);
+                al_draw_bitmap(finalPerdeu, 0, 0, 0);
                 al_draw_textf(fonte, al_map_rgb(0, 0, 0), 60, 300, 0, "PERDEU");
                 al_flip_display();
                 al_rest(9.0);
@@ -417,7 +431,7 @@ int main()
 
         if (pontuacao == qtdpirula)
         {
-           //definicao da fonte e seu respectivo tamanho 
+            //definicao da fonte e seu respectivo tamanho 
             fonte = al_load_font("vanellope.ttf", 150, 0);
             al_clear_to_color(al_map_rgb(0, 0, 0));
             al_draw_bitmap(final, 0, 0, 0);
@@ -428,7 +442,7 @@ int main()
         }
 
         desenha = true;
-        
+
         //Imprimir os objetos na tela 
         if (desenha && al_is_event_queue_empty(fila))
         {
@@ -449,7 +463,7 @@ int main()
             for (t = 0; t < qtdtijolo; t++) {
                 tijolo[t].imprimeTijolo();
             }
-           
+
             vanellope.imprimeVanellope(direcao);
 
             //imprimi os viloes
@@ -469,6 +483,7 @@ int main()
 
     al_destroy_bitmap(image);
     al_destroy_bitmap(final);
+    al_destroy_bitmap(finalPerdeu);
     al_destroy_display(display);
     al_destroy_event_queue(fila);
     al_destroy_timer(tempo);
@@ -477,7 +492,7 @@ int main()
     //desalocando os objetos 
     delete[]pirula;
     delete[]tijolo;
- 
+
 
     return 0;
 }
