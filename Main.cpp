@@ -1,9 +1,9 @@
 ﻿/*----------------- File: main.cpp -------------------+
 |			    DESCRICAO DO ARQUIVO			      |
-| 		      ETAPA 1 - Projeto vanellope Man		          |
+| 		      ETAPA 3 - Projeto vanellope Man		          |
 | 									                  |
 | Implementado por Flora Rosa e Sabrina Guimar�es 	  |
-|                                    	    30/04/2023|
+|                                    	    09/06/2023|
 +-----------------------------------------------------+*/
 
 #include <allegro5/allegro.h>

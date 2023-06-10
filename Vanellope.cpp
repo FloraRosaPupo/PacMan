@@ -1,3 +1,11 @@
+ï»¿/*----------------- File: main.cpp -------------------+
+|			    DESCRICAO DO ARQUIVO			      |
+| 		      ETAPA 3 - Projeto vanellope Man		  |
+| 									                  |
+| Implementado por Flora Rosa e Sabrina Guimarï¿½es 	  |
+|                                    	    09/06/2023|
++-----------------------------------------------------+*/
+
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_native_dialog.h>
@@ -44,7 +52,7 @@ void Vanellope::andaVanellope(int direcao)
 
 void Vanellope::imprimeVanellope(int direx)
 {
-	//Caso for posição 3 e 1, ele desenha para direita,caso contrário, esquerda.
+	//Caso for posiÃ§Ã£o 3 e 1, ele desenha para direita,caso contrÃ¡rio, esquerda.
 	
 	if (direx == 3 || direx == 1)
 	{
