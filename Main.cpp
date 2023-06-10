@@ -1,6 +1,6 @@
 ﻿/*----------------- File: main.cpp -------------------+
 |			    DESCRICAO DO ARQUIVO			      |
-| 		      ETAPA 3 - Projeto vanellope Man		          |
+| 		      ETAPA 3 - Projeto vanellope Man		  |
 | 									                  |
 | Implementado por Flora Rosa e Sabrina Guimar�es 	  |
 |                                    	    09/06/2023|
@@ -249,7 +249,7 @@ int main()
 
                     //passando uma direcao aleatoria
                     if (matriz[viloesPy[v] - 1][viloesPx[v]] == 1) {
-                        dirVilao = 2 + rand();
+                        dirVilao = rand();
                         printf("Entrou aqui %i\n", dirVilao);//teste
                     }
 
@@ -260,9 +260,9 @@ int main()
 
                     //passando uma direcao aleatoria
                     if (matriz[viloesPy[v] + 1][viloesPx[v]] == 1) {
-                        dirVilao = 1 + rand();
+                        dirVilao =rand();
                         while (dirVilao == 2) {
-                            dirVilao = 1 + rand();
+                            dirVilao =rand();
                             printf("Entrou aqui %i\n", dirVilao);//teste
                         }
                     }
@@ -272,9 +272,9 @@ int main()
                     viloes[v].setPosx(viloesPx[v]);
 
                     if (matriz[viloesPy[v]][viloesPx[v] + 1] == 1) {
-                        dirVilao = 1 + rand() % 4;
+                        dirVilao = rand();
                         while (dirVilao == 3) {
-                            dirVilao = 1 + rand() % 4;
+                            dirVilao = rand();
                             printf("Entrou aqui %i\n", dirVilao);//teste
                         }
                     }
@@ -284,9 +284,9 @@ int main()
                     viloes[v].setPosx(viloesPx[v]);
 
                     if (matriz[viloesPy[v]][viloesPx[v] - 1] == 1) {
-                        dirVilao = 1 + rand() % 4;
+                        dirVilao = rand();
                         while (dirVilao == 3) {
-                            dirVilao = 1 + rand() % 4;
+                            dirVilao = rand();
                             printf("Entrou aqui %i\n", dirVilao);//teste
                         }
                     }

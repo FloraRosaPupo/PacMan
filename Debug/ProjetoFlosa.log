@@ -1,3 +1,2 @@
 ﻿  Main.cpp
-dumb.lib(readpsm.obj) : warning LNK4099: PDB 'dumb.pdb' não foi encontrado 'dumb.lib(readpsm.obj)' ou no 'C:\Users\flora\source\repos\ProjetoFlosa\Debug\dumb.pdb'; vinculando objeto quando quando sem nenhuma informação de depuração
   ProjetoFlosa.vcxproj -> C:\Users\flora\source\repos\ProjetoFlosa\Debug\ProjetoFlosa.exe

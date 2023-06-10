@@ -1,3 +1,10 @@
+﻿/*----------------- File: main.cpp -------------------+
+|			    DESCRICAO DO ARQUIVO			      |
+| 		      ETAPA 3 - Projeto vanellope Man		  |
+| 									                  |
+| Implementado por Flora Rosa e Sabrina Guimar�es 	  |
+|                                    	    09/06/2023|
++-----------------------------------------------------+*/
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_native_dialog.h>
