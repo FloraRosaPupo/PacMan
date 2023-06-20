@@ -157,6 +157,8 @@
     <ClCompile Include="Tijolo.cpp" />
     <ClCompile Include="Vanellope.cpp" />
     <ClCompile Include="Viloes.cpp" />
+    <ClCompile Include="ViloesInteligentes.h" />
+    <ClCompile Include="VioloesInteligente.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

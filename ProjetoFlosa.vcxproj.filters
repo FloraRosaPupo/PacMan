@@ -33,6 +33,12 @@
     <ClCompile Include="Viloes.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="VioloesInteligente.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="ViloesInteligentes.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -56,10 +62,10 @@
     <Image Include="vilao2.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
-    <Image Include="vilao1.png">
+    <Image Include="fundoPerdeu.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
-    <Image Include="fundoPerdeu.png">
+    <Image Include="vilao1.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
   </ItemGroup>

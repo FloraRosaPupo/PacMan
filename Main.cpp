@@ -177,7 +177,8 @@ int main()
     Pirula* pirula = new Pirula[contP];
     Vanellope vanellope;
     Viloes viloes[4];
-
+  
+    
     //instanciando o objeto
     for (i = 0; i < 20; i++) {
         for (j = 0; j < 20; j++) {
@@ -208,6 +209,7 @@ int main()
                 viloes[v].setPosy(i);
                 viloes[v].carregaImagem();
                 v++;
+
             }
 
         }
@@ -239,7 +241,7 @@ int main()
 
             //movimentando os viloes
             for (int v = 0; v < 4; v++) {
-                viloesPy[v] = viloes[v].getPosy();
+                /*viloesPy[v] = viloes[v].getPosy();
                 viloesPx[v] = viloes[v].getPosx();
 
                 //Pra Cima
@@ -249,7 +251,7 @@ int main()
 
                     //passando uma direcao aleatoria
                     if (matriz[viloesPy[v] - 1][viloesPx[v]] == 1) {
-                        dirVilao = rand();
+                        dirVilao = rand()%4;
                         printf("Entrou aqui %i\n", dirVilao);//teste
                     }
 
@@ -260,10 +262,10 @@ int main()
 
                     //passando uma direcao aleatoria
                     if (matriz[viloesPy[v] + 1][viloesPx[v]] == 1) {
-                        dirVilao =rand();
+                        dirVilao =rand()%4;
                         while (dirVilao == 2) {
-                            dirVilao =rand();
-                            printf("Entrou aqui %i\n", dirVilao);//teste
+                            dirVilao =rand()%4;
+                          //  printf("Entrou aqui %i\n", dirVilao);//teste
                         }
                     }
                 }//Pra Direita
@@ -272,10 +274,10 @@ int main()
                     viloes[v].setPosx(viloesPx[v]);
 
                     if (matriz[viloesPy[v]][viloesPx[v] + 1] == 1) {
-                        dirVilao = rand();
+                        dirVilao = rand()%4;
                         while (dirVilao == 3) {
-                            dirVilao = rand();
-                            printf("Entrou aqui %i\n", dirVilao);//teste
+                            dirVilao = rand()%4;
+                            //printf("Entrou aqui %i\n", dirVilao);//teste
                         }
                     }
                 }//Pra Esquerda
@@ -284,13 +286,13 @@ int main()
                     viloes[v].setPosx(viloesPx[v]);
 
                     if (matriz[viloesPy[v]][viloesPx[v] - 1] == 1) {
-                        dirVilao = rand();
+                        dirVilao = rand()%4;
                         while (dirVilao == 3) {
-                            dirVilao = rand();
-                            printf("Entrou aqui %i\n", dirVilao);//teste
+                            dirVilao = rand()%4;
+                           // printf("Entrou aqui %i\n", dirVilao);//teste
                         }
                     }
-                }
+                }*/
             }
 
             //posicao da vanellope
@@ -510,12 +512,12 @@ void criarMatriz(int matriz[20][20]) {
          1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
          1,0,1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,1,
          1,0,1,0,1,1,1,1,1,1,0,1,1,1,1,1,0,1,0,1,
-         1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,
+         1,0,1,0,1,0,0,0,0,0,3,0,0,0,0,1,0,1,0,1,
          1,0,0,0,1,1,1,1,1,1,0,1,1,1,1,1,0,0,0,1,
          1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,
          1,0,1,0,0,1,1,1,1,1,0,1,1,1,1,1,0,1,0,1,
          1,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1,0,1,
-         1,0,1,0,1,0,1,0,1,3,1,0,1,0,1,0,0,1,0,1,
+         1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,
          1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,
          1,0,1,0,1,0,1,2,1,0,1,0,1,0,1,0,0,1,0,1,
          1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,
@@ -529,6 +531,5 @@ void criarMatriz(int matriz[20][20]) {
             matriz[i][j] = tabuleiro[i][j];
         }
     }
-
-
+   
 }

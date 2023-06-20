@@ -1,9 +1,9 @@
 ﻿/*----------------- File: main.cpp -------------------+
 |			    DESCRICAO DO ARQUIVO			      |
-| 		      ETAPA 3 - Projeto vanellope Man		  |
+| 		      ETAPA 4 - Projeto vanellope Man		  |
 | 									                  |
 | Implementado por Flora Rosa e Sabrina Guimar�es 	  |
-|                                    	    09/06/2023|
+|                                    	    26/06/2023|
 +-----------------------------------------------------+*/
 
 #include <allegro5/allegro.h>
@@ -15,28 +15,23 @@
 #include<stdlib.h>
 #include<stdio.h>
 
-#include"Heranca.h"
+#include"Viloes.h"
 
-#ifndef VILOES_H
-#define VILOES_H
+#ifndef VILOESINTELIGENTES_H
+#define VILOESINTELIGENTES_H
 
-class Viloes : public Heranca
-{
+class ViloesInteligentes : public Viloes {
+
 
 public:
-    Viloes();
-    ~Viloes();
+	ViloesInteligentes();
+	~ViloesInteligentes();
+	void posPacman(int posX, int posY);
+	int posAnt();
 
-    void carregaImagem();
-    void imprimeViloes(int direx);
+private: 
+	int posx;
+	int posy;
 
-    //poliformismo 
-    virtual void moverViloes(int matriz[20][20]);
-    int dir; 
-
-private:
-
-    ALLEGRO_BITMAP* viloes[4];
 };
-
-#endif // VILOES_H
+#endif //VILOESINTELIGENTES_H
