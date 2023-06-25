@@ -31,8 +31,10 @@ public:
     void imprimeViloes(int direx);
 
     //poliformismo 
+
     virtual void moverViloes(int matriz[20][20]);
-    int dir; 
+    int direcao;
+   
 
 private:
 

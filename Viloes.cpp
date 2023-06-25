@@ -21,14 +21,19 @@ using namespace std;
 
 Viloes::Viloes()
 {
-	viloes[0] = NULL;
-	viloes[1] = NULL;
+    viloes[0] = NULL;
+    viloes[1] = NULL;
+    viloes[2] = NULL;
+    viloes[3] = NULL;
 }
+
 
 void Viloes::carregaImagem()
 {
 	viloes[0] = al_load_bitmap("vilao1.png");
 	viloes[1] = al_load_bitmap("vilao2.png");
+    viloes[2] = al_load_bitmap("vilao1.png");
+    viloes[3] = al_load_bitmap("vilao2.png");
 }
 	
 
@@ -39,7 +44,7 @@ void Viloes::imprimeViloes(int direx)
 	{
 		al_draw_bitmap_region(viloes[0], 0, 0, 32, 32, posx * 32, posy * 32, 0);
 	}
-	else//direx ==1 || direx == 4 
+	else//direx ==1 || direx == 3
 	{
 		al_draw_bitmap_region(viloes[1], 0, 0, 32, 32, posx * 32, posy * 32, 0);
 	}
@@ -49,61 +54,69 @@ void Viloes::imprimeViloes(int direx)
 //poliformismo 
 
 void Viloes::moverViloes(int matriz[20][20]) {
+    int control[4];
+    int s;//deslocamento 
+    control[0] = true;
+    control[1] = true;
+    control[2] = true;
+    control[3] = true;
 
-    int x, y, dirVilao, desVilao;
 
-    //poliformismo
-    x = Heranca::posx;
-    y = Heranca::posy;
+    //Cima 
+    if (matriz[Heranca::getPosy() - 1][Heranca::getPosx()] == 1 || direcao == 2)
+    {
+        control[0] = false;
+    }
+    //Baixo 
+    if (matriz[Heranca::getPosy() + 1][Heranca::getPosx()] == 1 || direcao == 1)
+    {
+        control[1] = false;
+    }
 
-    //Pra cima
-    if (/*(dirVilao == 1) && */ matriz[y - 1][x] != 1) {
-        /*viloesPy[v] -= 1;
-        viloes[v].setPosy(viloesPy[v]);
+    //Direita
+    if (matriz[Heranca::getPosy()][Heranca::getPosx() + 1] == 1 || direcao == 4)
+    {
+        control[2] = false;
 
-        //passando uma direcao aleatoria
-        if (matriz[viloesPy[v] - 1][viloesPx[v]] == 1) {
-            dirVilao = rand() % 4;
-            printf("Entrou aqui %i\n", dirVilao);//teste
-        }*/
+    }
 
-    }//Pra baixo
-    else if (/*(dirVilao == 2) && */matriz[y + 1][x] != 1) {
-        viloesPy[v] += 1;
-        viloes[v].setPosy(viloesPy[v]);
+    //Esquerda
+    if (matriz[Heranca::getPosy()][Heranca::getPosx() - 1] == 1 || direcao == 3)
+    {
+        control[3] = false;
+    }
+    do
+    {
+        s = rand() % 4;
 
-        //passando uma direcao aleatoria
-        if (matriz[viloesPy[v] + 1][viloesPx[v]] == 1) {
-            dirVilao = rand() % 4;
-            while (dirVilao == 2) {
-                dirVilao = rand() % 4;
-                //  printf("Entrou aqui %i\n", dirVilao);//teste
-            }
-        }
-    }//Pra Direita
-    else if (/*(dirVilao == 3) &&*/ matriz[y][x + 1] != 1) {
-        viloesPx[v] += 1;
-        viloes[v].setPosx(viloesPx[v]);
+    } while (!control[s]);
+    direcao = s + 1;
 
-        if (matriz[viloesPy[v]][viloesPx[v] + 1] == 1) {
-            dirVilao = rand() % 4;
-            while (dirVilao == 3) {
-                dirVilao = rand() % 4;
-                //printf("Entrou aqui %i\n", dirVilao);//teste
-            }
-        }
-    }//Pra Esquerda
-    else if (/*(dirVilao == 3) &&*/ matriz[y][x - 1] != 1) {
-        viloesPx[v] -= 1;
-        viloes[v].setPosx(viloesPx[v]);
 
-        if (matriz[viloesPy[v]][viloesPx[v] - 1] == 1) {
-            dirVilao = rand() % 4;
-            while (dirVilao == 3) {
-                dirVilao = rand() % 4;
-                // printf("Entrou aqui %i\n", dirVilao);//teste
-            }
-        }
+    //Cima 
+    if (direcao == 1)
+    {
+        Heranca::setPosy(Heranca::getPosy() - 1);
+    }
+    //Baixo 
+    else if ((direcao == 2))
+    {
+        Heranca::setPosy(Heranca::getPosy() + 1);
+    }
+
+    //Esquerda
+    else if ((direcao == 3))
+    {
+        Heranca::setPosx(Heranca::getPosx() + 1);
+    }
+
+    //Direita
+    else if ((direcao == 4))
+    {
+        Heranca::setPosx(Heranca::getPosx() - 1);
+    }
+   
+
 }
 
 Viloes::~Viloes()

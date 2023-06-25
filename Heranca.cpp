@@ -20,16 +20,16 @@
 using namespace std;
 
 Heranca::Heranca() {
-	posx = NULL;
-	posy = NULL;
+	posx = 0;
+	posy = 0;
 }
 void Heranca::setPosx(int x)
 {
-	this->posx = x;
+	posx = x;
 }
 void Heranca::setPosy(int y)
 {
-	this->posy = y;
+	posy = y;
 }
 int Heranca::getPosx()
 {

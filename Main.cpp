@@ -22,6 +22,7 @@
 #include "Vanellope.h"
 #include "Heranca.h"
 #include "Viloes.h"
+#include "ViloesInteligentes.h"
 
 using namespace std;
 
@@ -134,7 +135,7 @@ int main()
 
     al_clear_to_color(al_map_rgb(255, 255, 255)); // Cor de background da tela (RGB)
 
-    al_draw_bitmap(image, 0, 0, 0); // Desenha a imagem
+   // al_draw_bitmap(image, 0, 0, 0); // Desenha a imagem
 
     //Variaveis
     int i, j;
@@ -144,7 +145,7 @@ int main()
     //variaveis da Pirula
     int contP = 0, qtdpirula = 0, p = 0;
     //variaveis do Vilao
-    int v = 0, dirVilao = 0, viloesPx[4], viloesPy[4];
+    int v = 0;
 
     //variaveis da Vanellope
     int posx, posy, direcao = 0;
@@ -176,7 +177,8 @@ int main()
     Tijolo* tijolo = new Tijolo[contT];
     Pirula* pirula = new Pirula[contP];
     Vanellope vanellope;
-    Viloes viloes[4];
+    Viloes viloes[3];
+    ViloesInteligentes viloesinteligentes;
   
     
     //instanciando o objeto
@@ -209,13 +211,17 @@ int main()
                 viloes[v].setPosy(i);
                 viloes[v].carregaImagem();
                 v++;
+            }
 
+            if (matriz[i][j] == 5) {
+                viloesinteligentes.setPosx(j);
+                viloesinteligentes.setPosy(i);
+                viloesinteligentes.carregaImagem();
             }
 
         }
     }
-
-
+    
     ALLEGRO_TIMER* tempo = al_create_timer(1.0 / 6);
     ALLEGRO_EVENT_QUEUE* fila = al_create_event_queue();
     al_register_event_source(fila, al_get_timer_event_source(tempo));
@@ -224,9 +230,10 @@ int main()
     al_set_timer_count(tempo, 0);
     al_start_timer(tempo);
 
+
     //Deixar o jogo em loop
     while (finalJogo == false) {
-
+        
         //eventos do teclado
         ALLEGRO_EVENT evento;
         al_wait_for_event(fila, &evento);
@@ -237,67 +244,17 @@ int main()
         }
 
         if (evento.type == ALLEGRO_EVENT_TIMER) {
-
-
-            //movimentando os viloes
-            for (int v = 0; v < 4; v++) {
-                /*viloesPy[v] = viloes[v].getPosy();
-                viloesPx[v] = viloes[v].getPosx();
-
-                //Pra Cima
-                if ((dirVilao == 1) && matriz[viloesPy[v] - 1][viloesPx[v]] != 1) {
-                    viloesPy[v] -= 1;
-                    viloes[v].setPosy(viloesPy[v]);
-
-                    //passando uma direcao aleatoria
-                    if (matriz[viloesPy[v] - 1][viloesPx[v]] == 1) {
-                        dirVilao = rand()%4;
-                        printf("Entrou aqui %i\n", dirVilao);//teste
-                    }
-
-                }//Pra baixo
-                else if ((dirVilao == 2) && matriz[viloesPy[v] + 1][viloesPx[v]] != 1) {
-                    viloesPy[v] += 1;
-                    viloes[v].setPosy(viloesPy[v]);
-
-                    //passando uma direcao aleatoria
-                    if (matriz[viloesPy[v] + 1][viloesPx[v]] == 1) {
-                        dirVilao =rand()%4;
-                        while (dirVilao == 2) {
-                            dirVilao =rand()%4;
-                          //  printf("Entrou aqui %i\n", dirVilao);//teste
-                        }
-                    }
-                }//Pra Direita
-                else if ((dirVilao == 3) && matriz[viloesPy[v]][viloesPx[v] + 1] != 1) {
-                    viloesPx[v] += 1;
-                    viloes[v].setPosx(viloesPx[v]);
-
-                    if (matriz[viloesPy[v]][viloesPx[v] + 1] == 1) {
-                        dirVilao = rand()%4;
-                        while (dirVilao == 3) {
-                            dirVilao = rand()%4;
-                            //printf("Entrou aqui %i\n", dirVilao);//teste
-                        }
-                    }
-                }//Pra Esquerda
-                else if ((dirVilao == 3) && matriz[viloesPy[v]][viloesPx[v] - 1] != 1) {
-                    viloesPx[v] -= 1;
-                    viloes[v].setPosx(viloesPx[v]);
-
-                    if (matriz[viloesPy[v]][viloesPx[v] - 1] == 1) {
-                        dirVilao = rand()%4;
-                        while (dirVilao == 3) {
-                            dirVilao = rand()%4;
-                           // printf("Entrou aqui %i\n", dirVilao);//teste
-                        }
-                    }
-                }*/
-            }
-
-            //posicao da vanellope
             posx = vanellope.getPosx();
             posy = vanellope.getPosy();
+
+            //movimentando os viloes
+            for (int v = 0; v < 3; v++) {  
+                
+                viloes[v].moverViloes(matriz);
+            }
+            viloesinteligentes.posPacman(posx, posy);
+            viloesinteligentes.moverViloes(matriz);
+            
 
             //pra cima
             if ((direcao == 1) && (matriz[posy - 1][posx]) != 1) {
@@ -377,25 +334,21 @@ int main()
                 //cima
             case ALLEGRO_KEY_UP:
                 direcao = 1;
-                dirVilao = 1;
                 break;
 
                 //baixo
             case ALLEGRO_KEY_DOWN:
                 direcao = 2;
-                dirVilao = 2;
                 break;
 
                 //direita
             case ALLEGRO_KEY_RIGHT:
                 direcao = 3;
-                dirVilao = 3;
                 break;
 
                 //esquerda
             case ALLEGRO_KEY_LEFT:
                 direcao = 4;
-                dirVilao = 4;
                 break;
             }
         }
@@ -420,16 +373,32 @@ int main()
 
         //colisao 
         for (int v = 0; v < 4; v++) {
-            if (vanellope.getPosy() == viloes[v].getPosy() && vanellope.getPosx() == viloes[v].getPosx()) {
-                fonte = al_load_font("vanellope.ttf", 150, 0);
-                al_clear_to_color(al_map_rgb(0, 0, 0));
-                al_draw_bitmap(finalPerdeu, 0, 0, 0);
-                al_draw_textf(fonte, al_map_rgb(0, 0, 0), 60, 300, 0, "PERDEU");
-                al_flip_display();
-                al_rest(9.0);
-                exit(1);
+            if (v == 3) {
+                if (vanellope.getPosy() == viloesinteligentes.getPosy() && vanellope.getPosx() == viloesinteligentes.getPosx()) {
+                    fonte = al_load_font("vanellope.ttf", 150, 0);
+                    al_clear_to_color(al_map_rgb(0, 0, 0));
+                    al_draw_bitmap(finalPerdeu, 0, 0, 0);
+                    al_draw_textf(fonte, al_map_rgb(0, 0, 0), 60, 300, 0, "PERDEU");
+                    al_flip_display();
+                    al_rest(9.0);
+                    exit(1);
+                }
             }
+            
+            if (vanellope.getPosy() == viloes[v].getPosy() && vanellope.getPosx() == viloes[v].getPosx()) {
+                    fonte = al_load_font("vanellope.ttf", 150, 0);
+                    al_clear_to_color(al_map_rgb(0, 0, 0));
+                    al_draw_bitmap(finalPerdeu, 0, 0, 0);
+                    al_draw_textf(fonte, al_map_rgb(0, 0, 0), 60, 300, 0, "PERDEU");
+                    al_flip_display();
+                    al_rest(9.0);
+                    exit(1);
+            }
+            
+           
         }
+
+        
 
         if (pontuacao == qtdpirula)
         {
@@ -470,11 +439,14 @@ int main()
 
             //imprimi os viloes
             for (int v = 0; v < 4; v++) {
+                if (v == 3) {
+                    viloesinteligentes.imprimeViloes(3);
+                }
                 viloes[v].imprimeViloes(v);
             }
+
             al_draw_textf(fonte, al_map_rgb(0, 0, 0), 810, 215, 0, "%d", pontuacao);
             al_flip_display();
-
         }
 
 
@@ -519,10 +491,10 @@ void criarMatriz(int matriz[20][20]) {
          1,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1,0,1,
          1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,
          1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,
-         1,0,1,0,1,0,1,2,1,0,1,0,1,0,1,0,0,1,0,1,
+         1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,
          1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,
          1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-         1,4,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1,4,1,
+         1,4,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1,5,1,
          1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
     };
 

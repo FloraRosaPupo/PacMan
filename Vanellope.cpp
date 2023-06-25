@@ -40,7 +40,7 @@ void Vanellope::andaVanellope(int direcao)
 	{
 		this->posy += 1;
 	}
-	else if (direcao == 3)
+	else if (direcao == 3) 
 	{
 		this->posx += 1;
 	}
@@ -52,9 +52,9 @@ void Vanellope::andaVanellope(int direcao)
 
 void Vanellope::imprimeVanellope(int direx)
 {
-	//Caso for posição 3 e 1, ele desenha para direita,caso contrário, esquerda.
+	//Caso for posição 1 e 3 , ele desenha para direita,caso contrário, esquerda.
 	
-	if (direx == 3 || direx == 1)
+	if (direx == 1 || direx == 3)
 	{
 		al_draw_bitmap_region(vanellope[0], 0, 0, 32, 32,posx * 32, posy * 32, 0);
 	}

@@ -33,7 +33,7 @@
     <ClCompile Include="Viloes.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="VioloesInteligente.cpp">
+    <ClCompile Include="VioloesInteligentes.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="ViloesInteligentes.h">

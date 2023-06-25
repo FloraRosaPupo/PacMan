@@ -26,6 +26,9 @@ class ViloesInteligentes : public Viloes {
 public:
 	ViloesInteligentes();
 	~ViloesInteligentes();
+
+
+	virtual void moverViloes(int matriz[20][20]);
 	void posPacman(int posX, int posY);
 	int posAnt();
 
