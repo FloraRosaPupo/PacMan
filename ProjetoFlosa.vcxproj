@@ -172,6 +172,8 @@
     <Image Include="vanDireita.png" />
     <Image Include="vilao1.png" />
     <Image Include="vilao2.png" />
+    <Image Include="vilao3.png" />
+    <Image Include="vilao4.png" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Heranca.h" />

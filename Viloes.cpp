@@ -32,22 +32,28 @@ void Viloes::carregaImagem()
 {
 	viloes[0] = al_load_bitmap("vilao1.png");
 	viloes[1] = al_load_bitmap("vilao2.png");
-    viloes[2] = al_load_bitmap("vilao1.png");
-    viloes[3] = al_load_bitmap("vilao2.png");
+    viloes[2] = al_load_bitmap("vilao3.png");
+    viloes[3] = al_load_bitmap("vilao4.png");
 }
 	
 
 void Viloes::imprimeViloes(int direx)
 {
 
-	if (direx == 0 || direx == 2)
+	if (direx == 0)
 	{
 		al_draw_bitmap_region(viloes[0], 0, 0, 32, 32, posx * 32, posy * 32, 0);
 	}
-	else//direx ==1 || direx == 3
+	else if(direx == 1)
 	{
 		al_draw_bitmap_region(viloes[1], 0, 0, 32, 32, posx * 32, posy * 32, 0);
-	}
+    }
+    else if (direx == 2) {
+        al_draw_bitmap_region(viloes[2], 0, 0, 32, 32, posx * 32, posy * 32, 0);
+    }
+    else if (direx == 3) {
+        al_draw_bitmap_region(viloes[3], 0, 0, 32, 32, posx * 32, posy * 32, 0);
+    }
 }
 
 
@@ -123,4 +129,6 @@ Viloes::~Viloes()
 {
 	al_destroy_bitmap(viloes[0]);
 	al_destroy_bitmap(viloes[1]);
+    al_destroy_bitmap(viloes[2]);
+    al_destroy_bitmap(viloes[3]);
 }

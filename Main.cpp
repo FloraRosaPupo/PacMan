@@ -306,7 +306,6 @@ int main()
                     {
                         vanellope.setPosx(posx);
                         vanellope.andaVanellope(posAnt);
-
                     }
                     break;
                 case 4:
@@ -314,7 +313,6 @@ int main()
                     {
                         vanellope.setPosx(posx);
                         vanellope.andaVanellope(posAnt);
-
                     }
                     break;
                 default:
@@ -438,12 +436,10 @@ int main()
             vanellope.imprimeVanellope(direcao);
 
             //imprimi os viloes
-            for (int v = 0; v < 4; v++) {
-                if (v == 3) {
-                    viloesinteligentes.imprimeViloes(3);
-                }
+            for (int v = 0; v < 3; v++) {
                 viloes[v].imprimeViloes(v);
             }
+            viloesinteligentes.imprimeViloes(3);
 
             al_draw_textf(fonte, al_map_rgb(0, 0, 0), 810, 215, 0, "%d", pontuacao);
             al_flip_display();
