@@ -60,68 +60,71 @@ void Viloes::imprimeViloes(int direx)
 //poliformismo 
 
 void Viloes::moverViloes(int matriz[20][20]) {
-    int control[4];
-    int s;//deslocamento 
-    control[0] = true;
-    control[1] = true;
-    control[2] = true;
-    control[3] = true;
-
-
-    //Cima 
-    if (matriz[Heranca::getPosy() - 1][Heranca::getPosx()] == 1 || direcao == 2)
-    {
-        control[0] = false;
-    }
-    //Baixo 
-    if (matriz[Heranca::getPosy() + 1][Heranca::getPosx()] == 1 || direcao == 1)
-    {
-        control[1] = false;
+    int opc[4], i, j, desV;//deslocamento 
+ 
+    for (int i = 0; i < 4; i++) {
+        opc[i] = true;
     }
 
-    //Direita
-    if (matriz[Heranca::getPosy()][Heranca::getPosx() + 1] == 1 || direcao == 4)
+    j = Heranca::getPosx();
+    i = Heranca::getPosy();
+
+
+    //pra cima 
+    if (direcao == 2 /*baixo*/ || matriz[i - 1][j] == 1)
     {
-        control[2] = false;
+        opc[0] = false;
+    }
+    //pra baixo 
+    if (direcao == 1 /*cima*/ || matriz[i + 1][j] == 1)
+    {
+        opc[1] = false;
+    }
+
+    //pra direita
+    if (direcao == 4 /*esquerda*/|| matriz[i][j + 1] == 1)
+    {
+        opc[2] = false;
 
     }
 
-    //Esquerda
-    if (matriz[Heranca::getPosy()][Heranca::getPosx() - 1] == 1 || direcao == 3)
+    //pra esqueda 
+    if (direcao == 3 /*direita*/ || matriz[i][j - 1] == 1)
     {
-        control[3] = false;
+        opc[3] = false;
     }
-    do
-    {
-        s = rand() % 4;
 
-    } while (!control[s]);
-    direcao = s + 1;
+    while (1) {
+        desV = rand() % 4;
+        if (opc[desV]) {
+            direcao = desV + 1;
+            break;
+        }
+    }
 
 
-    //Cima 
+    //pra cima 
     if (direcao == 1)
     {
-        Heranca::setPosy(Heranca::getPosy() - 1);
+        Heranca::setPosy(i- 1);
     }
-    //Baixo 
+    //pra baixo 
     else if ((direcao == 2))
     {
-        Heranca::setPosy(Heranca::getPosy() + 1);
+        Heranca::setPosy(i + 1);
     }
 
-    //Esquerda
+    //pra direita
     else if ((direcao == 3))
     {
-        Heranca::setPosx(Heranca::getPosx() + 1);
+        Heranca::setPosx(j + 1);
     }
 
-    //Direita
+    //pra esquerda 
     else if ((direcao == 4))
     {
-        Heranca::setPosx(Heranca::getPosx() - 1);
+        Heranca::setPosx(j - 1);
     }
-   
 
 }
 

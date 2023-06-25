@@ -53,7 +53,6 @@ void Vanellope::andaVanellope(int direcao)
 void Vanellope::imprimeVanellope(int direx)
 {
 	//Caso for posição 1 e 3 , ele desenha para direita,caso contrário, esquerda.
-	
 	if (direx == 1 || direx == 3)
 	{
 		al_draw_bitmap_region(vanellope[0], 0, 0, 32, 32,posx * 32, posy * 32, 0);
