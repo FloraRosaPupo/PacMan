@@ -59,19 +59,19 @@
     <Image Include="fundo.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
-    <Image Include="vilao2.png">
-      <Filter>Arquivos de Recurso</Filter>
-    </Image>
     <Image Include="fundoPerdeu.png">
-      <Filter>Arquivos de Recurso</Filter>
-    </Image>
-    <Image Include="vilao1.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
     <Image Include="vilao3.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
     <Image Include="vilao4.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="vilao1.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="vilao2.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
   </ItemGroup>
