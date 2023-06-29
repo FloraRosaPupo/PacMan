@@ -72,7 +72,7 @@ void ViloesInteligentes::moverViloes(int matriz[20][20])
 
     //Verifica a posicao da Vanellope
      //pra cima
-    if (direcao != 2 && j > posy && matriz[i - 1][j] == 1)
+    if (direcao != 2 && i > posy && matriz[i - 1][j] == 1)
     {
         while (1) {
             desV = rand() % 4;
@@ -141,8 +141,6 @@ void ViloesInteligentes::moverViloes(int matriz[20][20])
     {
         direcao = 4;
     }
-
-
 
 
     //----------------

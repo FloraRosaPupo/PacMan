@@ -48,16 +48,16 @@ int Pirula::getPosy()
 {
     return posy;
 }
-
+/*
 void Pirula::movimentaSprite()
 {
     sprite++;
-}
+}*/
 
 void Pirula::imprimePirula()
 {
 
-    sprite = sprite == 3 ? 0 : sprite;
+    //sprite = sprite == 3 ? 0 : sprite;
     al_draw_bitmap_region(pirula, sprite * 30, 0, 30, 30, posx * 32, posy * 32, 0);
 }
 Pirula::~Pirula()

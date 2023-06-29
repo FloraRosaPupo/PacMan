@@ -351,7 +351,7 @@ int main()
             }
         }
 
-        //colisao 
+        //colisao com a pirula 
         for (int p = 0; p < qtdpirula; p++)
         {
             //verifica se vai colidir com a pirula ou nao 
@@ -369,7 +369,7 @@ int main()
 
         }
 
-        //colisao 
+        //colisao com os fantasmas
         for (int v = 0; v < 4; v++) {
             if (v == 3) {
                 if (vanellope.getPosy() == viloesinteligentes.getPosy() && vanellope.getPosx() == viloesinteligentes.getPosx()) {

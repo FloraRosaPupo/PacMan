@@ -28,9 +28,9 @@ public:
 	~ViloesInteligentes();
 
 
-	virtual void moverViloes(int matriz[20][20]);
+	void moverViloes(int matriz[20][20]);
 	void posPacman(int posX, int posY);
-	int posAnt();
+	
 
 private: 
 	int posx;
