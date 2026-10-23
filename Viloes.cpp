@@ -16,11 +16,13 @@
 #include<stdio.h>
 
 #include "Viloes.h"
+#include "domain/movement.h"
 
 using namespace std;
 
 Viloes::Viloes()
 {
+    direcao = 0;
     viloes[0] = NULL;
     viloes[1] = NULL;
     viloes[2] = NULL;
@@ -35,7 +37,7 @@ void Viloes::carregaImagem()
     viloes[2] = al_load_bitmap("vilao3.png");
     viloes[3] = al_load_bitmap("vilao4.png");
 }
-	
+
 
 void Viloes::imprimeViloes(int direx)
 {
@@ -57,58 +59,19 @@ void Viloes::imprimeViloes(int direx)
 }
 
 
-//poliformismo 
+//poliformismo
 
 void Viloes::moverViloes(int matriz[20][20]) {
-    int opc[4], i, j, desV;//deslocamento 
- 
-    for (int i = 0; i < 4; i++) {
-        opc[i] = true;
-    }
+    const int j = Heranca::getPosx();
+    const int i = Heranca::getPosy();
+    direcao = chooseDirection(matriz, j, i, direcao, static_cast<unsigned>(rand()));
 
-    j = Heranca::getPosx();
-    i = Heranca::getPosy();
-
-
-    //pra cima 
-    if (direcao == 2 /*baixo*/ || matriz[i - 1][j] == 1)
-    {
-        opc[0] = false;
-    }
-    //pra baixo 
-    if (direcao == 1 /*cima*/ || matriz[i + 1][j] == 1)
-    {
-        opc[1] = false;
-    }
-
-    //pra direita
-    if (direcao == 4 /*esquerda*/|| matriz[i][j + 1] == 1)
-    {
-        opc[2] = false;
-
-    }
-
-    //pra esqueda 
-    if (direcao == 3 /*direita*/ || matriz[i][j - 1] == 1)
-    {
-        opc[3] = false;
-    }
-
-    while (1) {
-        desV = rand() % 4;
-        if (opc[desV]) {
-            direcao = desV + 1;
-            break;
-        }
-    }
-
-
-    //pra cima 
+    //pra cima
     if (direcao == 1)
     {
         Heranca::setPosy(i- 1);
     }
-    //pra baixo 
+    //pra baixo
     else if ((direcao == 2))
     {
         Heranca::setPosy(i + 1);
@@ -120,7 +83,7 @@ void Viloes::moverViloes(int matriz[20][20]) {
         Heranca::setPosx(j + 1);
     }
 
-    //pra esquerda 
+    //pra esquerda
     else if ((direcao == 4))
     {
         Heranca::setPosx(j - 1);

@@ -14,3 +14,22 @@ Foi corrigido um acesso ao quarto elemento de um array com três inimigos. A com
 
 ## Licença
 Não há licença de distribuição definida. Os recursos gráficos e sonoros também precisam ter seus direitos de uso verificados antes de redistribuição.
+
+
+## Stack e bibliotecas
+
+C++17, Allegro 5 e projeto Visual Studio.
+
+
+## Funcionalidades
+
+- Movimento do jogador.
+- inimigos e colisões.
+- pontuação por coleta.
+
+
+## Organização e manutenção
+
+Classes de entidades e renderização foram preservadas. A escolha de direção dos inimigos saiu para `domain/movement.h`, independente de Allegro e com aleatoriedade recebida como entrada. Evita loop infinito em beco sem saída e acesso fora dos limites.
+
+Veja [a revisão de desenvolvimento](docs/REVISAO.md) para decisões, testes e limites, e [o guia de contribuição](CONTRIBUTING.md) para o fluxo de manutenção.
