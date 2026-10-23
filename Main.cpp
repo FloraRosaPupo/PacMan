@@ -1,4 +1,4 @@
-﻿/*----------------- File: main.cpp -------------------+
+/*----------------- File: main.cpp -------------------+
 |			    DESCRICAO DO ARQUIVO			      |
 | 		      ETAPA 3 - Projeto vanellope Man		  |
 | 									                  |
@@ -151,7 +151,7 @@ int main()
     int posx, posy, direcao = 0;
 
 
-    //variaveis do jogo 
+    //variaveis do jogo
     bool finalJogo = false, desenha = true;
     int posAnt = 0, pontuacao = 0;
 
@@ -179,8 +179,8 @@ int main()
     Vanellope vanellope;
     Viloes viloes[3];
     ViloesInteligentes viloesinteligentes;
-  
-    
+
+
     //instanciando o objeto
     for (i = 0; i < 20; i++) {
         for (j = 0; j < 20; j++) {
@@ -221,7 +221,7 @@ int main()
 
         }
     }
-    
+
     ALLEGRO_TIMER* tempo = al_create_timer(1.0 / 6);
     ALLEGRO_EVENT_QUEUE* fila = al_create_event_queue();
     al_register_event_source(fila, al_get_timer_event_source(tempo));
@@ -233,7 +233,7 @@ int main()
 
     //Deixar o jogo em loop
     while (finalJogo == false) {
-        
+
         //eventos do teclado
         ALLEGRO_EVENT evento;
         al_wait_for_event(fila, &evento);
@@ -248,13 +248,13 @@ int main()
             posy = vanellope.getPosy();
 
             //movimentando os viloes
-            for (int v = 0; v < 3; v++) {  
-                
+            for (int v = 0; v < 3; v++) {
+
                 viloes[v].moverViloes(matriz);
             }
             viloesinteligentes.posPacman(posx, posy);
             viloesinteligentes.moverViloes(matriz);
-            
+
 
             //pra cima
             if ((direcao == 1) && (matriz[posy - 1][posx]) != 1) {
@@ -269,13 +269,13 @@ int main()
                 vanellope.andaVanellope(direcao);
                 posAnt = direcao;
             }
-            // pra direita 
+            // pra direita
             else if ((direcao == 3) && (matriz[posy][posx + 1]) != 1) {
                 vanellope.setPosx(posx);
                 vanellope.andaVanellope(direcao);
                 posAnt = direcao;
             }
-            // pra esquerda 
+            // pra esquerda
             else if ((direcao == 4) && (matriz[posy][posx - 1]) != 1) {
                 vanellope.setPosx(posx);
                 vanellope.andaVanellope(direcao);
@@ -351,10 +351,10 @@ int main()
             }
         }
 
-        //colisao com a pirula 
+        //colisao com a pirula
         for (int p = 0; p < qtdpirula; p++)
         {
-            //verifica se vai colidir com a pirula ou nao 
+            //verifica se vai colidir com a pirula ou nao
 
             if (vanellope.getPosy() == pirula[p].getPosy() && vanellope.getPosx() == pirula[p].getPosx())
             {
@@ -382,8 +382,8 @@ int main()
                     exit(1);
                 }
             }
-            
-            if (vanellope.getPosy() == viloes[v].getPosy() && vanellope.getPosx() == viloes[v].getPosx()) {
+
+            if (v < 3 && vanellope.getPosy() == viloes[v].getPosy() && vanellope.getPosx() == viloes[v].getPosx()) {
                     fonte = al_load_font("vanellope.ttf", 150, 0);
                     al_clear_to_color(al_map_rgb(0, 0, 0));
                     al_draw_bitmap(finalPerdeu, 0, 0, 0);
@@ -392,15 +392,15 @@ int main()
                     al_rest(9.0);
                     exit(1);
             }
-            
-           
+
+
         }
 
-        
+
 
         if (pontuacao == qtdpirula)
         {
-            //definicao da fonte e seu respectivo tamanho 
+            //definicao da fonte e seu respectivo tamanho
             fonte = al_load_font("vanellope.ttf", 150, 0);
             al_clear_to_color(al_map_rgb(0, 0, 0));
             al_draw_bitmap(final, 0, 0, 0);
@@ -412,7 +412,7 @@ int main()
 
         desenha = true;
 
-        //Imprimir os objetos na tela 
+        //Imprimir os objetos na tela
         if (desenha && al_is_event_queue_empty(fila))
         {
             desenha = false;
@@ -459,7 +459,7 @@ int main()
     al_destroy_timer(tempo);
     al_destroy_font(fonte);
 
-    //desalocando os objetos 
+    //desalocando os objetos
     delete[]pirula;
     delete[]tijolo;
 
@@ -499,5 +499,5 @@ void criarMatriz(int matriz[20][20]) {
             matriz[i][j] = tabuleiro[i][j];
         }
     }
-   
+
 }

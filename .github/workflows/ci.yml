@@ -1,0 +1,12 @@
+name: Movement tests
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined tests/test_movement.cpp -o /tmp/test_movement
+      - run: /tmp/test_movement
